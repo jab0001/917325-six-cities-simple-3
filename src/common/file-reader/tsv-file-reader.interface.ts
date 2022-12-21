@@ -36,7 +36,7 @@ export default class TSVFileReader implements FileReaderInterface {
         guests: Number.parseInt(guests, 10),
         price: Number.parseInt(price, 10),
         features: features.split(';')
-        .map((name) => ({name})),
+          .map((name) => ({name})),
         user: {email, firstname, lastname, avatarPath},
         comments: Number.parseInt(comments, 10),
         coordinates

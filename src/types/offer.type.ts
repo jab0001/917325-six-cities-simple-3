@@ -8,7 +8,7 @@ export type Offer = {
   city: string;
   image: string;
   categories: Category[];
-  premium: Boolean;
+  premium: boolean;
   rating: number;
   typeOfRent: string;
   rooms: number;
