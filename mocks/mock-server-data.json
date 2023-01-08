@@ -1,0 +1,71 @@
+
+{
+    "api": {
+        "titles":[
+            "title1",
+            "title2",
+            "title3",
+            "title4",
+            "title5"
+        ],
+        "descriptions":[
+            "description1",
+            "description2",
+            "description3",
+            "description4",
+            "description5"
+        ],
+        "citys":[
+            "Paris",
+            "Cologne",
+            "Brussels",
+            "Amsterdam",
+            "Hamburg",
+            "Dusseldorf"
+        ],
+        "offerPhotos":[
+            "offerPhoto1.jpg",
+            "offerPhoto2.jpg",
+            "offerPhoto3.jpg",
+            "offerPhoto4.jpg",
+            "offerPhoto5.jpg"
+    ],
+        "rentPhotos":[
+            "rentPhotos1.jpg",
+            "rentPhotos2.jpg",
+            "rentPhotos3.jpg",
+            "rentPhotos4.jpg",
+            "rentPhotos5.jpg"
+        ],
+        "typeOfRent":[
+            "apartment",
+            "house",
+            "room",
+            "hotel"
+        ],
+        "features":[
+            "Breakfast",
+            "Air conditioning",
+            "Laptop friendly workspace",
+            "Baby seat",
+            "Washer",
+            "Towels",
+            "Fridge"
+        ],
+        "users":[
+            "Denis",
+            "Scot",
+            "Ivan",
+            "Bill",
+            "Garry"
+        ],
+        "coordinates":[
+            "latitude: 48.85661, longitude: 2.351499",
+            "latitude: 50.938361, longitude: 6.959974",
+            "latitude: 50.846557, longitude: 4.351697",
+            "latitude: 52.370216, longitude: 4.895168",
+            "latitude: 53.550341, longitude: 10.000654",
+            "latitude: 51.225402, longitude: 6.776314"
+        ]
+    }
+}
