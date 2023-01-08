@@ -17,4 +17,4 @@ export type Offer = {
     user: string;
     comments: number;
     coordinates: string;
-  }
+}
