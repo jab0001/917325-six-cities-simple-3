@@ -53,11 +53,35 @@
             "Fridge"
         ],
         "users":[
-            "Denis",
-            "Scot",
-            "Ivan",
-            "Bill",
-            "Garry"
+            "Иван Иванов",
+            "Олег Сидоров",
+            "Пьер Безухов",
+            "Роланд Дискейн",
+            "Холи Гибни",
+            "Джек Торренс",
+            "Антон Городецкий",
+            "Борис Гесер",
+            "Рокки Бальбоа",
+            "Джон Смит"
+        ],
+        "emails": [
+            "snow@pisem.local",
+            "president@dka.local",
+            "fish@big.local",
+            "test@pisem.local",
+            "freedom@pisem.local",
+            "rolan@pochta.local",
+            "author@mir.local",
+            "test@lost.loca",
+            "kujo-fan@story.local"
+          ],
+        "avatars": [
+          "user.jpg",
+          "photo.jpg",
+          "awesome-avatar.jpg",
+          "roland.jpg",
+          "smit.jpg",
+          "coffee.jpg"
         ],
         "coordinates":[
             "latitude: 48.85661, longitude: 2.351499",
