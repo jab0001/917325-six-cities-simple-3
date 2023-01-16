@@ -6,7 +6,7 @@ export default class CreateOfferDto {
   public postDate!: Date;
   public city!: string;
   public offerPhoto!: string;
-  public rentPhoto!: string[];
+  public rentPhotos!: string[];
   public premium!: boolean;
   public rating!: number;
   public typeOfRent!: RentType;
@@ -16,5 +16,5 @@ export default class CreateOfferDto {
   public features!: string[];
   public userId!: string;
   public comments!: number;
-  public coordiantes!: string;
+  public coordinates!: string;
 }

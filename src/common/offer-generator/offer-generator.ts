@@ -30,7 +30,7 @@ export default class OfferGenerator implements OfferGeneratorInterface {
     const postDate = dayjs().subtract(generateRandomValue(CountsLimits.FIRST_WEEK_DAY, CountsLimits.LAST_WEEK_DAY), 'day').toISOString();
     const city = getRandomItem<string>(this.mockData.citys);
     const offerPhoto = getRandomItem<string>(this.mockData.offerPhotos);
-    const rentPhoto = getRandomItems<string>(this.mockData.rentPhotos).join(';');
+    const rentPhotos = getRandomItems<string>(this.mockData.rentPhotos).join(';');
     const premium = generateRandomFlag();
     const rating = generateRandomValue(CountsLimits.MIN_RATING, CountsLimits.MAX_RATING).toString();
     const typeOfRent = getRandomItem([RentType.apartment, RentType.house, RentType.room, RentType.hotel]);
@@ -52,7 +52,7 @@ export default class OfferGenerator implements OfferGeneratorInterface {
       postDate,
       city,
       offerPhoto,
-      rentPhoto,
+      rentPhotos,
       premium,
       rating,
       typeOfRent,

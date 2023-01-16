@@ -28,7 +28,7 @@ export class OfferEntity extends defaultClasses.TimeStamps {
   public offerPhoto!: string;
 
   @prop()
-  public rentPhoto!: string[];
+  public rentPhotos!: string[];
 
   @prop({default: false})
   public premium!: boolean;
