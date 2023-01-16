@@ -30,7 +30,7 @@ export default class OfferGenerator implements OfferGeneratorInterface {
     const postDate = dayjs().subtract(generateRandomValue(CountsLimits.FIRST_WEEK_DAY, CountsLimits.LAST_WEEK_DAY), 'day').toISOString();
     const city = getRandomItem<string>(this.mockData.citys);
     const offerPhoto = getRandomItem<string>(this.mockData.offerPhotos);
-    const rentPhoto = getRandomItems<string>(this.mockData.rentPhotos).join(';');
+    const rentPhotos = getRandomItems<string>(this.mockData.rentPhotos).join(';');
     const premium = generateRandomFlag();
     const rating = generateRandomValue(CountsLimits.MIN_RATING, CountsLimits.MAX_RATING).toString();
     const typeOfRent = getRandomItem([RentType.apartment, RentType.house, RentType.room, RentType.hotel]);
@@ -38,9 +38,13 @@ export default class OfferGenerator implements OfferGeneratorInterface {
     const guests = generateRandomValue(CountsLimits.MIN_GUESTS, CountsLimits.MAX_GUESTS).toString();
     const price = generateRandomValue(CountsLimits.MIN_PRICE, CountsLimits.MAX_PRICE).toString();
     const features = getRandomItems<string>(this.mockData.features).join(';');
-    const user = getRandomItem<string>(this.mockData.users);
+    const author = getRandomItem<string>(this.mockData.users);
+    const email = getRandomItem<string>(this.mockData.emails);
+    const avatar = getRandomItem<string>(this.mockData.avatars);
     const comments = generateRandomValue(CountsLimits.MIN_COMMENTS, CountsLimits.MAX_COMMENTS).toString();
     const coordinates = getRandomItem<string>(this.mockData.coordinates);
+
+    const [firstname, lastname] = author.split(' ');
 
     return [
       title,
@@ -48,7 +52,7 @@ export default class OfferGenerator implements OfferGeneratorInterface {
       postDate,
       city,
       offerPhoto,
-      rentPhoto,
+      rentPhotos,
       premium,
       rating,
       typeOfRent,
@@ -56,7 +60,10 @@ export default class OfferGenerator implements OfferGeneratorInterface {
       guests,
       price,
       features,
-      user,
+      firstname,
+      lastname,
+      email,
+      avatar,
       comments,
       coordinates,
     ].join('\t');

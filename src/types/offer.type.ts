@@ -1,4 +1,5 @@
 import { RentType } from './rent.enum.js';
+import { User } from './user.type.js';
 
 export type Offer = {
     title: string;
@@ -14,7 +15,7 @@ export type Offer = {
     guests: number;
     price: number;
     features: string[];
-    user: string;
+    user: User;
     comments: number;
     coordinates: string;
 }
