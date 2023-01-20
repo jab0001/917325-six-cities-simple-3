@@ -32,6 +32,7 @@ export default class OfferGenerator implements OfferGeneratorInterface {
     const offerPhoto = getRandomItem<string>(this.mockData.offerPhotos);
     const rentPhotos = getRandomItems<string>(this.mockData.rentPhotos).join(';');
     const premium = generateRandomFlag();
+    const isPro = generateRandomFlag();
     const rating = generateRandomValue(CountsLimits.MIN_RATING, CountsLimits.MAX_RATING).toString();
     const typeOfRent = getRandomItem([RentType.apartment, RentType.house, RentType.room, RentType.hotel]);
     const rooms = generateRandomValue(CountsLimits.MIN_ROOMS, CountsLimits.MAX_ROOMS).toString();
@@ -61,6 +62,7 @@ export default class OfferGenerator implements OfferGeneratorInterface {
       price,
       features,
       firstname,
+      isPro,
       lastname,
       email,
       avatar,
