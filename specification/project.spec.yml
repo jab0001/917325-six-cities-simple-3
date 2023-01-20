@@ -1,0 +1,220 @@
+openapi: 3.1.0
+info:
+  title: API сервер для личного проекта «Шесть городов (простой)».
+  description: |-
+    * Список ресурсов и маршрутов сервера «Шесть городов (простой)».
+  license:
+    name: MIT
+    url: https://opensource.org/licenses/MIT
+  version: 2.0.0
+tags:
+  - name: offers
+    description: Действия с объявлениями.
+  - name: comments
+    description: Действия с комментариями.
+  - name: users
+    description: Действия с пользователем.
+paths:
+  /comments: 
+    post: 
+      tags:
+        - comments
+      summary: Создание комментария.
+      description: Создание нового комментария для объявления.
+    get:  
+      tags:
+        - comments
+      summary: Получение комментариев.
+      description: Получение всех комментариев по объявлению.
+
+  /offers/new:
+    post:
+      tags:
+        - offers
+      summary: Создание объявления.
+      description: Создание нового объявления по аренде.
+
+      requestBody:
+        description: Информация для создания нового пользователя.
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/createOffer"
+        required: true
+
+      responses:
+        "200":
+          description: .
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/offer"
+
+        "401":
+          description: Для создания объявления необходимо зарегестрироваться.
+
+  /offers/editing:
+    put:
+      tags:
+        - offers
+      summary: Редактирование объявления.
+      description: Редактирование объявления по аренде.
+
+  /offers/delete:
+    delete:
+      tags:
+        - offers
+      summary: Удаление объявления.
+      description: Удаление объявления по аренде.
+
+  /offers/all:
+    get:
+      tags:
+        - offers
+      summary: Получение всех объявлений.
+      description: Получение всех объявлени по аренде.
+
+  /offers/details:
+    get:
+      tags:
+        - offers
+      summary: Получение деталей по объявлению
+      description: Получение детальной информации по объявлению по аренде
+
+  /users/register:
+    post:
+      tags:
+        - users
+      summary: Регистрация пользователя
+      description: Регистрирует нового пользователя.
+
+      requestBody:
+        description: Информация для создания нового пользователя.
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/createUser"
+        required: true
+
+      responses:
+        "201":
+          description: Пользователь зарегистрирован. Объект пользователя.
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/user"
+
+        "409":
+          description: Пользователь с таким email уже существует.
+
+  /users/login:
+    post:
+      tags:
+        - users
+      summary: Авторизация пользователя
+      description: Авторизует пользователя на основе логина и пароля
+    get:
+      tags:
+        - users
+      summary: Проверка состояния пользователя
+      description: Возвращает информацию по авторизованному пользователю
+  /users/{userId}/avatar:
+    post:
+      tags:
+        - users
+      summary: Загрузить изображение аватара
+      description: Загружает изображение аватара пользователя. Изображение
+        аватара должно быть в формате `png` или `jpg`.
+
+components:
+  schemas:
+    createUser:
+      type: object
+
+      properties:
+        email:
+          type: string
+          example: ivan.ivanov@mail.ru
+
+        firstname:
+          type: string
+          example: Ivan
+
+        lastname:
+          type: string
+          example: Ivanov
+
+        password:
+          type: string
+          example: 123456
+
+    createOffer:
+      type: object
+
+      properties:
+        title:
+          type: string
+          example: Best rent ever
+
+        description:
+          type: string
+          example: nice flat
+
+        city:
+          type: string
+          example: London
+
+        offerPhoto:
+          type: string
+          example: avatar.jpg
+
+        rentPhotos:
+          type: array
+          example: [one.jpg, two.jpg]
+
+        premium:
+          type: number
+          example: 1
+
+        rating:
+          type: number
+          example: 5
+
+        typeOfRent:
+          type: string
+          example: flat
+
+        rooms:
+          type: number
+          example: 1
+
+        guests:
+          type: number
+          example: 1
+
+        price:
+          type: number
+          example: 3000
+
+        features:
+          type: array
+          example: [item1, item2, item3]
+
+        coordinates:
+          type: string
+          example: "latitude: 48.85661, longitude: 2.351499"
+
+    user:
+      type: object
+
+      properties:
+        id:
+          type: string
+          example: 6329c3d6a04ab1061c6425ea
+
+        email:
+          type: string
+          example: ivan.ivanov@mail.ru
+
+    offer:
+      type: object
