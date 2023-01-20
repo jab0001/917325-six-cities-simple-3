@@ -24,7 +24,7 @@ export default class OfferService implements OfferServiceInterface {
   }
 
   public async findById(offerId: string): Promise<DocumentType<OfferEntity> | null> {
-    return this.offerModel.findById(offerId).populate(['userId']).exec();
+    return this.offerModel.findById(offerId).populate('userId').exec();
   }
 
   public async find(): Promise<DocumentType<OfferEntity>[]> {
@@ -40,7 +40,7 @@ export default class OfferService implements OfferServiceInterface {
   public async updateById(offerId: string, dto: UpdateOfferDto): Promise<DocumentType<OfferEntity> | null> {
     return this.offerModel
       .findByIdAndUpdate(offerId, dto, {new: true})
-      .populate(['userId'])
+      .populate('userId')
       .exec();
   }
 
@@ -48,7 +48,7 @@ export default class OfferService implements OfferServiceInterface {
     const limit = count ?? DEFAULT_OFFER_COUNT;
     return this.offerModel
       .find({rentType: RentType}, {}, {limit})
-      .populate(['userId'])
+      .populate('userId')
       .exec();
   }
 
@@ -60,7 +60,7 @@ export default class OfferService implements OfferServiceInterface {
   public async incCommentCount(offerId: string): Promise<DocumentType<OfferEntity> | null> {
     return this.offerModel
       .findByIdAndUpdate(offerId, {'$inc': {
-        commentCount: 1,
+        comments: 1,
       }}).exec();
   }
 
@@ -69,16 +69,16 @@ export default class OfferService implements OfferServiceInterface {
       .find()
       .sort({createdAt: SortType.Down})
       .limit(count)
-      .populate(['userId'])
+      .populate('userId')
       .exec();
   }
 
   public async findDiscussed(count: number): Promise<DocumentType<OfferEntity>[]> {
     return this.offerModel
       .find()
-      .sort({commentCount: SortType.Down})
+      .sort({comments: SortType.Down})
       .limit(count)
-      .populate(['userId'])
+      .populate('userId')
       .exec();
   }
 }

@@ -33,16 +33,16 @@ export default class OfferGenerator implements OfferGeneratorInterface {
     const rentPhotos = getRandomItems<string>(this.mockData.rentPhotos).join(';');
     const premium = generateRandomFlag();
     const isPro = generateRandomFlag();
-    const rating = generateRandomValue(CountsLimits.MIN_RATING, CountsLimits.MAX_RATING).toString();
+    const rating = generateRandomValue(CountsLimits.MIN_RATING, CountsLimits.MAX_RATING);
     const typeOfRent = getRandomItem([RentType.apartment, RentType.house, RentType.room, RentType.hotel]);
-    const rooms = generateRandomValue(CountsLimits.MIN_ROOMS, CountsLimits.MAX_ROOMS).toString();
-    const guests = generateRandomValue(CountsLimits.MIN_GUESTS, CountsLimits.MAX_GUESTS).toString();
-    const price = generateRandomValue(CountsLimits.MIN_PRICE, CountsLimits.MAX_PRICE).toString();
+    const rooms = generateRandomValue(CountsLimits.MIN_ROOMS, CountsLimits.MAX_ROOMS);
+    const guests = generateRandomValue(CountsLimits.MIN_GUESTS, CountsLimits.MAX_GUESTS);
+    const price = generateRandomValue(CountsLimits.MIN_PRICE, CountsLimits.MAX_PRICE);
     const features = getRandomItems<string>(this.mockData.features).join(';');
     const author = getRandomItem<string>(this.mockData.users);
     const email = getRandomItem<string>(this.mockData.emails);
     const avatar = getRandomItem<string>(this.mockData.avatars);
-    const comments = generateRandomValue(CountsLimits.MIN_COMMENTS, CountsLimits.MAX_COMMENTS).toString();
+    const comments = generateRandomValue(CountsLimits.MIN_COMMENTS, CountsLimits.MAX_COMMENTS);
     const coordinates = getRandomItem<string>(this.mockData.coordinates);
 
     const [firstname, lastname] = author.split(' ');
