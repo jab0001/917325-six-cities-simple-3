@@ -1,7 +1,7 @@
 # Личный проект «Шесть городов (простой)»
 
 * Студент: [Павел Лотонин](https://up.htmlacademy.ru/nodejs-api/3/user/917325).
-* Наставник: [Максим Малахов](https://htmlacademy.ru/profile/id1534899).
+* Наставник: [Владимир Якушкин](https://htmlacademy.ru/profile/id126208).
 
 ---
 
