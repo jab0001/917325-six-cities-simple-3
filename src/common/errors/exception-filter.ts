@@ -27,13 +27,13 @@ export default class ExceptionFilter implements ExceptionFilterInterface {
     res
       .status(StatusCodes.INTERNAL_SERVER_ERROR)
       .json(createErrorObject(error.message));
-    }
-  
+  }
+
   public catch(error: Error | HttpError, req: Request, res: Response, next: NextFunction): void {
     if (error instanceof HttpError) {
       return this.handleHttpError(error, req, res, next);
     }
-  
+
     this.handleOtherError(error, req, res, next);
   }
 }

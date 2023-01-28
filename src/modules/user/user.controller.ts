@@ -34,39 +34,39 @@ export default class UserController extends Controller {
     const existsUser = await this.userService.findByEmail(body.email);
 
     if (existsUser) {
-        throw new HttpError(
-          StatusCodes.CONFLICT,
-          `User with email «${body.email}» exists.`,
-          'UserController'
-        );
-      }
-  
-      const result = await this.userService.create(body, this.configService.get('SALT'));
-      this.send(
-        res,
-        StatusCodes.CREATED,
-        fillDTO(UserResponse, result)
+      throw new HttpError(
+        StatusCodes.CONFLICT,
+        `User with email «${body.email}» exists.`,
+        'UserController'
       );
+    }
+
+    const result = await this.userService.create(body, this.configService.get('SALT'));
+    this.send(
+      res,
+      StatusCodes.CREATED,
+      fillDTO(UserResponse, result)
+    );
   }
 
   public async login(
     {body}: Request<Record<string, unknown>, Record<string, unknown>, LoginUserDto>,
     _res: Response,
-): Promise<void> {
+  ): Promise<void> {
     const existsUser = await this.userService.findByEmail(body.email);
-    
+
     if (!existsUser) {
       throw new HttpError(
         StatusCodes.UNAUTHORIZED,
-          `User with email ${body.email} not found.`,
-          'UserController',
+        `User with email ${body.email} not found.`,
+        'UserController',
       );
     }
-    
+
     throw new HttpError(
       StatusCodes.NOT_IMPLEMENTED,
-        'Not implemented',
-        'UserController',
+      'Not implemented',
+      'UserController',
     );
   }
 }

@@ -20,10 +20,10 @@ type ParamsGetOffer = {
 
 @injectable()
 export default class CategoryController extends Controller {
-    constructor(
-        @inject(Component.LoggerInterface) logger: LoggerInterface,
-        @inject(Component.OfferServiceInterface) private readonly offerService: OfferServiceInterface,
-        @inject(Component.CommentServiceInterface) private readonly commentService: CommentServiceInterface
+  constructor(
+    @inject(Component.LoggerInterface) logger: LoggerInterface,
+    @inject(Component.OfferServiceInterface) private readonly offerService: OfferServiceInterface,
+    @inject(Component.CommentServiceInterface) private readonly commentService: CommentServiceInterface
   ) {
     super(logger);
 
@@ -36,7 +36,7 @@ export default class CategoryController extends Controller {
     this.addRoute({path: '/:offerId', method: HttpMethod.Patch, handler: this.update});
     this.addRoute({path: '/:offerId/comments', method: HttpMethod.Get, handler: this.getComments});
     this.addRoute({path: '/:offerId/comments', method: HttpMethod.Delete, handler: this.deleteComments});
-    
+
   }
 
   public async show(
