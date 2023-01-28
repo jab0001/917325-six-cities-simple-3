@@ -10,4 +10,4 @@ export const getRandomItems = <T>(items: T[]):T[] => {
 export const getRandomItem = <T>(items: T[]):T =>
   items[generateRandomValue(0, items.length - 1)];
 
-export const generateRandomFlag = (): boolean => Boolean(generateRandomValue(0, 1));
+export const generateRandomFlag = () => generateRandomValue(0, 1);

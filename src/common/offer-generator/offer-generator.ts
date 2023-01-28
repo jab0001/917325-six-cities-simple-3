@@ -62,10 +62,10 @@ export default class OfferGenerator implements OfferGeneratorInterface {
       price,
       features,
       firstname,
-      isPro,
       lastname,
       email,
       avatar,
+      isPro,
       comments,
       coordinates,
     ].join('\t');
