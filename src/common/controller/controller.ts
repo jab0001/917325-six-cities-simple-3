@@ -26,7 +26,7 @@ export abstract class Controller implements ControllerInterface {
 
     const allHandlers = middlewares ? [...middlewares, routeHandler] : routeHandler;
     this._router[route.method](route.path, allHandlers);
-    
+
     this.logger.info(`Route registered: ${route.method.toUpperCase()} ${route.path}`);
   }
 

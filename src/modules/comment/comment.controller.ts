@@ -23,13 +23,13 @@ export default class CommentController extends Controller {
 
     this.logger.info('Register routes for CommentController…');
     this.addRoute({
-        path: '/',
-        method: HttpMethod.Post,
-        handler: this.create,
-        middlewares: [
-          new ValidateDtoMiddleware(CreateCommentDto),
-        ]
-      });
+      path: '/',
+      method: HttpMethod.Post,
+      handler: this.create,
+      middlewares: [
+        new ValidateDtoMiddleware(CreateCommentDto),
+      ]
+    });
   }
 
   public async create(
