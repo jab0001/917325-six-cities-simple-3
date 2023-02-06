@@ -3,6 +3,9 @@ import {RentType} from '../../../types/rent.enum.js';
 
 export default class OfferResponse {
   @Expose()
+  public id!: string;
+
+  @Expose()
   public title!: string;
 
   @Expose()
