@@ -45,7 +45,6 @@ export default class CreateOfferDto {
   @IsArray({message: 'Field categories must be an array'})
   public features!: string[];
 
-  @IsMongoId({message: 'userId field must be valid an id'})
   public userId!: string;
 
   @IsInt({message: 'Price must be an integer'})
