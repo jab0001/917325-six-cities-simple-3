@@ -1,5 +1,5 @@
 import {RentType} from '../../../types/rent.enum.js';
-import {IsArray, IsDateString, IsEnum, IsInt, IsMongoId, Max, MaxLength, Min, MinLength, IsBoolean, IsString} from 'class-validator';
+import {IsArray, IsDateString, IsEnum, IsInt, Max, MaxLength, Min, MinLength, IsBoolean, IsString} from 'class-validator';
 
 export default class CreateOfferDto {
   @MinLength(10, {message: 'Minimum title length must be 10'})
@@ -45,7 +45,6 @@ export default class CreateOfferDto {
   @IsArray({message: 'Field categories must be an array'})
   public features!: string[];
 
-  @IsMongoId({message: 'userId field must be valid an id'})
   public userId!: string;
 
   @IsInt({message: 'Price must be an integer'})
