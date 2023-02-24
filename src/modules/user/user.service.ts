@@ -16,7 +16,7 @@ export default class UserService implements UserServiceInterface {
     @inject(Component.LoggerInterface) private logger: LoggerInterface,
     @inject(Component.UserModel) private readonly userModel: types.ModelType<UserEntity>
   ) {}
-  
+
   public async verifyUser(dto: LoginUserDto, salt: string): Promise<DocumentType<UserEntity> | null> {
     const user = await this.findByEmail(dto.email);
 
