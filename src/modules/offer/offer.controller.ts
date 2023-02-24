@@ -17,6 +17,9 @@ import { DEFAULT_DISCUSSED_OFFER_COUNT, DEFAULT_NEW_OFFER_COUNT } from './offer.
 import { ValidateDtoMiddleware } from '../../common/middlewares/validate-dto.middleware.js';
 import {DocumentExistsMiddleware} from '../../common/middlewares/document-exists.middleware.js';
 import {PrivateRouteMiddleware} from '../../common/middlewares/private-route.middleware.js';
+import {ConfigInterface} from '../../common/config/config.interface.js';
+import {UploadFileMiddleware} from '../../common/middlewares/upload-file.middleware.js';
+import UploadImageResponse from './response/upload-image.response.js';
 
 type ParamsGetOffer = {
     offerId: string;
@@ -26,10 +29,11 @@ type ParamsGetOffer = {
 export default class CategoryController extends Controller {
   constructor(
     @inject(Component.LoggerInterface) logger: LoggerInterface,
+    @inject(Component.ConfigInterface) configService: ConfigInterface,
     @inject(Component.OfferServiceInterface) private readonly offerService: OfferServiceInterface,
     @inject(Component.CommentServiceInterface) private readonly commentService: CommentServiceInterface
   ) {
-    super(logger);
+    super(logger, configService);
 
     this.logger.info('Register routes for OfferController…');
 
@@ -89,6 +93,16 @@ export default class CategoryController extends Controller {
       method: HttpMethod.Delete,
       handler: this.deleteComments,
       middlewares: [new ValidateObjectIdMiddleware('offerId')]
+    });
+    this.addRoute({
+      path: '/:offerId/image',
+      method: HttpMethod.Post,
+      handler: this.uploadImage,
+      middlewares: [
+        new PrivateRouteMiddleware(),
+        new ValidateObjectIdMiddleware('offerId'),
+        new UploadFileMiddleware(this.configService.get('UPLOAD_DIRECTORY'), 'image'),
+      ]
     });
   }
 
@@ -164,5 +178,12 @@ export default class CategoryController extends Controller {
   public async getDiscussed(_req: Request, res: Response) {
     const discussedOffers = await this.offerService.findDiscussed(DEFAULT_DISCUSSED_OFFER_COUNT);
     this.ok(res, fillDTO(OfferResponse, discussedOffers));
+  }
+
+  public async uploadImage(req: Request<core.ParamsDictionary | ParamsGetOffer>, res: Response) {
+    const {offerId} = req.params;
+    const updateDto = { offerPhoto: req.file?.filename };
+    await this.offerService.updateById(offerId, updateDto);
+    this.created(res, fillDTO(UploadImageResponse, {updateDto}));
   }
 }
