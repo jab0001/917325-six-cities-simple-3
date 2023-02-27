@@ -13,9 +13,6 @@ export default class CreateOfferDto {
   @IsDateString({}, {message: 'postDate must be valid ISO date'})
   public postDate!: Date;
 
-  @IsString({message: 'avatarPath is required'})
-  public city!: string;
-
   @MaxLength(256, {message: 'Too short for field «image»'})
   public offerPhoto!: string;
 
