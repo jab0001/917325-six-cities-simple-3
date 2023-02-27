@@ -12,7 +12,7 @@ Content-Type: application/json
 {
   "firstname": "Ivan",
   "lastname": "Ivanov",
-  "email": "ivanov@ya.ru",
+  "email": "ivanov@yandex.ru",
   "password": "secret",
   "isPro": "true"
 }
